@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Date(TS)</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Deep(KM)</th>
+        <th scope="col">Type</th>
+        <th scope="col">Magnitude</th>
+        <th scope="col">Location</th>
+        <th scope="col">Earthquake Id</th>
+      </tr>
+    </thead>
+    <% if (data && data.length > 0) { %>
+    <tbody>
+      <% data.forEach(earthquake => { %>
+        <tr>
+          <td><%= earthquake.date %></td>
+          <td><%= earthquake.latitude %></td>
+          <td><%= earthquake.longitude %></td>
+          <td><%= earthquake.depth %></td>
+          <td><%= earthquake.type %></td>
+          <td><%= earthquake.magnitude %></td>
+          <td><%= earthquake.location %></td>
+          <td><%= earthquake.id %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+    <% } else { %>
+    <tr>
+      <td colspan="7">No earthquake data available.</td>
+    </tr>
+    <% } %>
+    <% if (data.error) { %>
+    <tr>
+      <td colspan="7">Error: <%= error %></td>
+    </tr>
+    <% } %>
+  </table>
+</div>
+
+<%- include("partials/footer.ejs") %>

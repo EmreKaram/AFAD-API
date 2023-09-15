@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = 3000;
 const apiUrl = process.env.API_URL;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +35,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}...`);
 });
